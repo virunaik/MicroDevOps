@@ -14,7 +14,11 @@ pipeline {
 
         stage('Install httpd') {
             steps {
-                sh 'sudo yum install httpd -y'
+                sh '''
+                     sudo yum install httpd -y
+                     systemctl enable httpd
+                     systemctl start httpd
+                 '''
             }
         }
 
